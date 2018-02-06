@@ -1,7 +1,7 @@
 /*
-	PhotoGate.cpp - Library for PhotoGate control.
-	Created by Rahul Goyal, August 19, 2017.
-	Released to Cal Poly Baja SAE. ;)
+    PhotoGate.h - Library for WheelSpeed.
+    Created by Tyler Davis and Rahul Goyal, January 20, 2018.
+    Released to Cal Poly Baja SAE. ;)
 */
 
 
