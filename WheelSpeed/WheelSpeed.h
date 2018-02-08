@@ -1,6 +1,6 @@
 /*
-	PhotoGate.h - Library header for PhotoGate control.
-	Created by Tyler Davis and Rahul Goyal, August 19, 2017.
+	PhotoGate.h - Library header for WheelSpeed.
+	Created by Tyler Davis and Rahul Goyal, January 20, 2018.
 	Released to Cal Poly Baja SAE. ;)
 */
 
