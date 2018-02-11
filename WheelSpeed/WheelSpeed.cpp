@@ -1,49 +1,26 @@
 /*
-    PhotoGate.h - Library for WheelSpeed.
-    Created by Tyler Davis and Rahul Goyal, January 20, 2018.
-    Released to Cal Poly Baja SAE. ;)
+	WheelSpeed.cpp - Library for PhotoGate control.
+	Created by Rahul Goyal and Tyler Davis, January 20, 2017.
+	Released to Cal Poly Baja SAE. ;)
 */
-
-
 
 #include "Arduino.h"
 #include "WheelSpeed.h"
 
-
-
 WheelSpeed::WheelSpeed(int pin, int resolution) {
 	PIN = pin;
-    pinMode(PIN, INPUT);
 	RESOLUTION = resolution;
+	pinMode(PIN, INPUT);
+	prevTime = micros();
 }
 
+float WheelSpeed::getRps() { return rps; }
+int WheelSpeed::getPin() { return PIN; }
 
-
-float WheelSpeed::getSpeed() {
-
-    boolean signalReading = digitalRead(PIN);
-
-    if (signalReading == AIR && wasOnMetal) {
-        wasOnAir = true;
-        wasOnMetal = false;
-    }
-
-    if (signalReading == METAL && wasOnAir) {
-
-        unsigned long currTime = micros();
-        rps = secToHz(currTime - prevTime);
-        prevTime = currTime;
-        
-        wasOnMetal = true;
-        wasOnAir = false;
-    } 
-
-    // Timeout
-    if (micros() - prevTime > 1000000) {
-        rps = 0.0;
-    }
-
-    return rps;
+void WheelSpeed::calcRps() {
+    currTime = micros();
+    rps = secToHz(currTime - prevTime);
+    prevTime = currTime;
 }
 
 float WheelSpeed::secToHz(unsigned long timeDiff) {
