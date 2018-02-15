@@ -7,23 +7,24 @@
 #include "Arduino.h"
 #include "WheelSpeed.h"
 
-WheelSpeed::WheelSpeed(int pin, int resolution) {
+WheelSpeed::WheelSpeed(int pin, int triggers) {
 	PIN = pin;
-	RESOLUTION = resolution;
+	TRIGGERS = triggers;
 	pinMode(PIN, INPUT);
 	prevTime = micros();
 }
 
-float WheelSpeed::getRps() { return rps; }
+float WheelSpeed::getRPS() { return RPS; }
+void WheelSpeed::overrideRPS(float artificalRPS = 0) { RPS = artificalRPS; }
 int WheelSpeed::getPin() { return PIN; }
 
-void WheelSpeed::calcRps() {
+void WheelSpeed::calcRPS() {
     currTime = micros();
-    rps = secToHz(currTime - prevTime);
+    RPS = secToHz(currTime - prevTime);
     prevTime = currTime;
 }
 
 float WheelSpeed::secToHz(unsigned long timeDiff) {
-	float secPerRotation = (timeDiff / 1000000.0) * RESOLUTION;
+	float secPerRotation = (timeDiff / 1000000.0) * TRIGGERS;
     return 1 / secPerRotation;
 }

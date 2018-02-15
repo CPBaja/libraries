@@ -11,28 +11,29 @@
 
 #include "Arduino.h"
 
-
-
 class WheelSpeed {
 
 	public:
 		// Constructor
 		WheelSpeed(int pin, int resolution);
 		
-		float getRps();
+		float getRPS();
+		void overrideRPS(float artificalRPS = 0);
 		int getPin();
-		void calcRps();
-		float secToHz(unsigned long timeDiff);
+		void calcRPS();
 
 	private:
 
+		float secToHz(unsigned long timeDiff);
+
+
 		int PIN;
-		int RESOLUTION;		
+		int TRIGGERS;		
 
 		unsigned long prevTime;
 		unsigned long currTime;
 
-		float rps = 0.0;
+		float RPS = 0.0;
 		
 };
 
