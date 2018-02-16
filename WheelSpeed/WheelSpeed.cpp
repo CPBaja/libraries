@@ -28,7 +28,7 @@ WheelSpeed::WheelSpeed(int pin, int triggers) {
 void WheelSpeed::calcRPS() {
 
 	// Calculate and update RPS
-	currTime = micros()
+	currTime = micros();
 	RPS = usToRPS(currTime - prevTime);
 
 	// Update prevTime
@@ -58,7 +58,7 @@ void WheelSpeed::overrideRPS(float rps = 0) {
 
 // Helper method
 float WheelSpeed::usToRPS(unsigned long usDelta) {
-	float secDelta = usDelta / 100000.0;
+	float secDelta = usDelta / 1000000.0;
 	float period = secDelta * TRIGGERS;
 	float frequency = 1 / period;
 	return frequency;

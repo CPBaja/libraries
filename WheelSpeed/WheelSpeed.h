@@ -35,7 +35,7 @@ class WheelSpeed {
 		float RPS = 0.0;
 
 		// Helper method
-		float usToHz(unsigned long usDelta);
+		float usToRPS(unsigned long usDelta);
 		
 };
 
