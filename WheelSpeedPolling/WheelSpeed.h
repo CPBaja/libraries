@@ -1,5 +1,5 @@
 /*
-	PhotoGate.h - Library header for WheelSpeed.
+	PhotoGate.h - Library header for measuring wheel speed.
 	Created by Tyler Davis and Rahul Goyal, January 20, 2018.
 	Released to Cal Poly Baja SAE. ;)
 */
