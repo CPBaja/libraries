@@ -16,6 +16,7 @@
 class WheelSpeed {
 
 	public:
+
 		// Constructor
 		WheelSpeed(int pin, int resolution);
 		
@@ -23,6 +24,7 @@ class WheelSpeed {
 		float secToHz(unsigned long timeDiff);
 
 	private:
+		
 		int PIN;
 		int RESOLUTION;
 
