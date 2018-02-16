@@ -47,9 +47,7 @@ static unsigned char PROGMEM const logo16_glcd_bmp[] =
 
 // Constructor
 LiveDisplay::LiveDisplay(int chars) {
-
 	CHARS = chars;
-
 }
 
 
@@ -57,11 +55,11 @@ LiveDisplay::LiveDisplay(int chars) {
 void LiveDisplay::begin() {
 
 	display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+
+	// Splash screen
 	clear();
 	write("Baja!");
 	delay(2500);
-
-
 
 	// Display Baja car splash screen
 	// ...
