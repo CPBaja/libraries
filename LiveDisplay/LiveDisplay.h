@@ -19,14 +19,13 @@ class LiveDisplay {
 
 		// Methods
 		void begin();
+		void clear();
+		void title(String str);
 		void write(float num);
 		void write(String str);
 
 	private:
 		int CHARS;
-
-		// Helper method
-		void reset();
 
 };
 

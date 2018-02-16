@@ -57,6 +57,7 @@ LiveDisplay::LiveDisplay(int chars) {
 void LiveDisplay::begin() {
 
 	display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+	clear();
 	write("Baja!");
 	delay(2500);
 
@@ -69,15 +70,36 @@ void LiveDisplay::begin() {
 
 
 
+void LiveDisplay::clear() {
+	display.clearDisplay();
+	display.setTextColor(WHITE);
+}
+
+
+
+void LiveDisplay::title(String str) {
+	
+	// Reset
+	display.setTextSize(2);
+	display.setCursor(0, 0);
+
+	// Print value
+	display.println(str);
+
+}
+
+
+
 void LiveDisplay::write(float num) {
 
 	// Reset
-	reset();
+	display.setTextSize(7);
+	display.setCursor(0, 16);
 	
 	// Convert float to string and truncate value
 	String str = String(num).substring(0, CHARS);
 
-	// Display value
+	// Print and display value
 	display.println(str);
 	display.display();
 
@@ -88,23 +110,14 @@ void LiveDisplay::write(float num) {
 void LiveDisplay::write(String str) {
 	
 	// Reset
-	reset();
+	display.setTextSize(7);
+	display.setCursor(0, 16);
 
 	// Truncate value
 	str = str.substring(0, CHARS);
 
-	// Display value
+	// Print and display value
 	display.println(str);
 	display.display();
 
-}
-
-
-
-// Helper method
-void LiveDisplay::reset() {
-	display.clearDisplay();
-	display.setTextSize(7);
-	display.setTextColor(WHITE);
-	display.setCursor(0, 16);
 }
