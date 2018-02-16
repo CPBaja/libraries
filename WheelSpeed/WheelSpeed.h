@@ -1,5 +1,5 @@
 /*
-	PhotoGate.h - Library header for measuring wheel speed.
+	WheelSpeed.h - Library header for measuring wheel speed.
 	Created by Tyler Davis and Rahul Goyal, January 20, 2017.
 	Released to Cal Poly Baja SAE. ;)
 */
@@ -14,18 +14,17 @@
 class WheelSpeed {
 
 	public:
+		
 		// Constructor
 		WheelSpeed(int pin, int resolution);
-		
-		float getRPS();
-		void overrideRPS(float artificalRPS = 0);
-		int getPin();
+
+		// Methods
 		void calcRPS();
+		int getPin();
+		float getRPS();
+		void overrideRPS(float rps = 0);
 
 	private:
-
-		float secToHz(unsigned long timeDiff);
-
 
 		int PIN;
 		int TRIGGERS;		
@@ -34,6 +33,9 @@ class WheelSpeed {
 		unsigned long currTime;
 
 		float RPS = 0.0;
+
+		// Helper method
+		float usToHz(unsigned long usDelta);
 		
 };
 
