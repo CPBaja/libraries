@@ -1,5 +1,5 @@
 /*
-	LiveDisplay.cpp - Library to display live data.
+	LiveDisplay.h - Library header to display live data.
 	Created by Rahul Goyal and Tyler Davis, February 15, 2017.
 	Released to Cal Poly Baja SAE. ;)
 */
