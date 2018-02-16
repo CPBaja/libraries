@@ -4,9 +4,12 @@
 	Released to Cal Poly Baja SAE. ;)
 */
 
-#include <Wire.h>
+#include <Arduino.h>
+#include <LiveDisplay.h>
+
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include <Wire.h>
 
 #define OLED_RESET 4
 Adafruit_SSD1306 display(OLED_RESET);
@@ -47,12 +50,18 @@ LiveDisplay::LiveDisplay(int chars) {
 
 	CHARS = chars;
 
+}
+
+
+
+void LiveDisplay::begin() {
+
 	display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
-  
+
 	// TEMPORARY
 	display.display();
 	delay(2000);
-	display.clearDisplay();
+	display.clearDisplay();			// Why doesn't this work?
 
 
 	// Display Baja car splash screen
@@ -62,17 +71,16 @@ LiveDisplay::LiveDisplay(int chars) {
 
 
 
-
 void LiveDisplay::update(String value) {
 
 	// Reset
 	display.clearDisplay();
-	display.setTextSize(2);
+	display.setTextSize(7);
 	display.setTextColor(WHITE);
-	display.setCursor(10,0);
+	display.setCursor(0, 16);
 	
 	// Truncate value
-	value = value.substring(0, CHARS)
+	value = value.substring(0, CHARS);
 
 	// Display value
 	display.println(value);

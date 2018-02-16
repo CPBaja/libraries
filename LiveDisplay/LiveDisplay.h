@@ -4,18 +4,21 @@
 	Released to Cal Poly Baja SAE. ;)
 */
 
+
+
 #ifndef LiveDisplay_h
 #define LiveDisplay_h
 
 #include "Arduino.h"
 
-class {
+class LiveDisplay {
 
 	public:
 		// Constructor
 		LiveDisplay(int chars);
 
 		// Methods
+		void begin();
 		void update(String value);
 
 	private:
