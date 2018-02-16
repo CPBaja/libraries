@@ -26,7 +26,8 @@ WheelSpeed::WheelSpeed(int pin, int triggers) {
 void WheelSpeed::calcRPS() {
 
 	// Calculate and update RPS
-	RPS = usToRPS(micros() - prevTime);
+	currTime = micros()
+	RPS = usToRPS(currTime - prevTime);
 
 	// Update prevTime
 	prevTime = currTime;
