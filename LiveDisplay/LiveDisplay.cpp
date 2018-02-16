@@ -57,11 +57,9 @@ LiveDisplay::LiveDisplay(int chars) {
 void LiveDisplay::begin() {
 
 	display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+	write("Baja!");
+	delay(2500);
 
-	// TEMPORARY
-	display.display();
-	delay(2000);
-	display.clearDisplay();			// Why doesn't this work?
 
 
 	// Display Baja car splash screen
@@ -71,19 +69,42 @@ void LiveDisplay::begin() {
 
 
 
-void LiveDisplay::update(String value) {
+void LiveDisplay::write(float num) {
 
 	// Reset
+	reset();
+	
+	// Convert float to string and truncate value
+	String str = String(num).substring(0, CHARS);
+
+	// Display value
+	display.println(str);
+	display.display();
+
+}
+
+
+
+void LiveDisplay::write(String str) {
+	
+	// Reset
+	reset();
+
+	// Truncate value
+	str = str.substring(0, CHARS);
+
+	// Display value
+	display.println(str);
+	display.display();
+
+}
+
+
+
+// Helper method
+void LiveDisplay::reset() {
 	display.clearDisplay();
 	display.setTextSize(7);
 	display.setTextColor(WHITE);
 	display.setCursor(0, 16);
-	
-	// Truncate value
-	value = value.substring(0, CHARS);
-
-	// Display value
-	display.println(value);
-	display.display();
-
 }
