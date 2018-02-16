@@ -16,11 +16,10 @@ class WheelSpeed {
 	public:
 		
 		// Constructor
-		WheelSpeed(int pin, int resolution);
+		WheelSpeed(int triggers);
 
 		// Methods
 		void calcRPS();
-		int getPin();
 		float getRPS();
 		void overrideRPS(float rps = 0);
 

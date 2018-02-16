@@ -10,13 +10,9 @@
 
 
 // Constructor
-WheelSpeed::WheelSpeed(int pin, int triggers) {
+WheelSpeed::WheelSpeed(int triggers) {
 
-	PIN = pin;
 	TRIGGERS = triggers;
-
-	// Set pin mode
-	pinMode(PIN, INPUT);
 
 	// Initialize prevTime
 	prevTime = micros();
@@ -34,12 +30,6 @@ void WheelSpeed::calcRPS() {
 	// Update prevTime
 	prevTime = currTime;
 
-}
-
-
-
-int WheelSpeed::getPin() {
-	return PIN;
 }
 
 
