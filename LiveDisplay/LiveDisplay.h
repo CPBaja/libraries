@@ -15,6 +15,12 @@ class {
 		// Constructor
 		LiveDisplay(int chars);
 
-}
+		// Methods
+		void update(String value);
+
+	private:
+		int CHARS;
+
+};
 
 #endif
