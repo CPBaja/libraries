@@ -15,14 +15,14 @@ class LiveDisplay {
 
 	public:
 		// Constructor
-		LiveDisplay(int chars);
+		LiveDisplay();
 
 		// Methods
 		void begin();
 		void clear();
 		void title(String str);
-		void write(float num);
-		void write(String str);
+		void write(float num, int chars);
+		void write(String str, int chars);
 
 	private:
 		int CHARS;
