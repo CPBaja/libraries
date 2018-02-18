@@ -9,7 +9,8 @@
 
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-#include <Wire.h>
+#include <Fonts/FreeMonoBold18pt7b.h>
+#include <Fonts/FreeMonoBold24pt7b.h>
 
 #define OLED_RESET 4
 Adafruit_SSD1306 display(OLED_RESET);
@@ -56,8 +57,9 @@ void LiveDisplay::begin() {
 
 	// Splash screen
 	clear();
-	display.setTextSize(4);
-	display.setCursor(8, 16);
+	display.setFont(&FreeMonoBold18pt7b);
+	display.setTextSize(1);
+	display.setCursor(16, 42);
 	display.println("Baja!");
 	display.display();
 	delay(5000);
@@ -89,8 +91,9 @@ void LiveDisplay::clear() {
 void LiveDisplay::title(String str) {
 	
 	// Reset
+	display.setFont();
 	display.setTextSize(2);
-	display.setCursor(0, 0);
+	display.setCursor(0,0);
 
 	// Print value
 	display.println(str);
@@ -102,8 +105,9 @@ void LiveDisplay::title(String str) {
 void LiveDisplay::write(float num, int chars) {
 
 	// Reset
-	display.setTextSize(7);
-	display.setCursor(0, 16);
+	display.setFont(&FreeMonoBold24pt7b);
+	display.setTextSize(1);
+	display.setCursor(24, 54);
 	
 	// Convert float to string and truncate value
 	String str = String(num).substring(0, chars);
@@ -119,8 +123,9 @@ void LiveDisplay::write(float num, int chars) {
 void LiveDisplay::write(String str, int chars) {
 	
 	// Reset
-	display.setTextSize(7);
-	display.setCursor(0, 16);
+	display.setFont(&FreeMonoBold24pt7b);
+	display.setTextSize(1);
+	display.setCursor(24, 54);
 
 	// Truncate value
 	str = str.substring(0, chars);
