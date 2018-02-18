@@ -1,2 +1,5 @@
 LiveDisplay	KEYWORD1
-update		KEYWORD2
+begin		KEYWORD2
+clear		KEYWORD2
+title		KEYWORD2
+write		KEYWORD2
