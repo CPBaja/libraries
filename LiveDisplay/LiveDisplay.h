@@ -29,4 +29,5 @@ class LiveDisplay {
 
 };
 
+extern LiveDisplay carDisplay;
 #endif

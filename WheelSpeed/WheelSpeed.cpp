@@ -4,10 +4,10 @@
 	Released to Cal Poly Baja SAE. ;)
 */
 
-#include "Arduino.h"
+#include <Arduino.h>
 #include "WheelSpeed.h"
 
-
+#define TIMEOUT 2500000
 
 // Constructor
 WheelSpeed::WheelSpeed(int triggers) {
@@ -35,13 +35,8 @@ void WheelSpeed::calcRPS() {
 
 
 float WheelSpeed::getRPS() {
+	if (RPS != 0 && micros() - prevTime >= TIMEOUT) RPS = 0;
 	return RPS;
-}
-
-
-
-void WheelSpeed::overrideRPS(float rps = 0) {
-	RPS = rps;
 }
 
 

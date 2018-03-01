@@ -9,7 +9,7 @@
 #ifndef WheelSpeed_h
 #define WheelSpeed_h
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 class WheelSpeed {
 
@@ -21,7 +21,6 @@ class WheelSpeed {
 		// Methods
 		void calcRPS();
 		float getRPS();
-		void overrideRPS(float rps = 0);
 
 	private:
 
