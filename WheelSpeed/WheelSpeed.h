@@ -21,6 +21,7 @@ class WheelSpeed {
 		// Methods
 		void calcRPS();
 		float getRPS();
+		void setRPS(float rps);
 
 	private:
 

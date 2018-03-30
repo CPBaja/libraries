@@ -29,5 +29,5 @@ class LiveDisplay {
 
 };
 
-extern LiveDisplay carDisplay;
+extern LiveDisplay myDisplay;
 #endif

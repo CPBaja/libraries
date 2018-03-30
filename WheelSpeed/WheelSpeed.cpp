@@ -7,7 +7,7 @@
 #include <Arduino.h>
 #include "WheelSpeed.h"
 
-#define TIMEOUT 2500000
+#define TIMEOUT 1000000
 
 // Constructor
 WheelSpeed::WheelSpeed(int triggers) {
@@ -35,16 +35,25 @@ void WheelSpeed::calcRPS() {
 
 
 float WheelSpeed::getRPS() {
-	if (RPS != 0 && micros() - prevTime >= TIMEOUT) RPS = 0;
+	if (micros() - prevTime >= TIMEOUT) {
+		RPS = 0;
+	}
 	return RPS;
+}
+
+
+
+void WheelSpeed::setRPS(float rps) {
+	RPS = rps;
 }
 
 
 
 // Helper method
 float WheelSpeed::usToRPS(unsigned long usDelta) {
-	float secDelta = usDelta / 1000000.0;
-	float period = secDelta * TRIGGERS;
-	float frequency = 1 / period;
-	return frequency;
+	// float secDelta = usDelta / 1000000.0;
+	// float period = secDelta * TRIGGERS;
+	// float frequency = 1 / period;
+	// return frequency;
+	return (1000000.0 / usDelta) / TRIGGERS;
 }
