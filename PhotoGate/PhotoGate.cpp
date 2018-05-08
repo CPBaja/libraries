@@ -10,8 +10,9 @@
 #include "PhotoGate.h"
 
 
+PhotoGate::PhotoGate() {}
 
-PhotoGate::PhotoGate(int pin, int calibButton, int resetButton) {
+void PhotoGate::init(int pin, int calibButton) {
 	
 	// Pin
 	_pin = pin;
@@ -19,9 +20,6 @@ PhotoGate::PhotoGate(int pin, int calibButton, int resetButton) {
 
 	// Calibration Button
 	_calibButton = calibButton;
-
-	// Reset Button
-	_resetButton = resetButton;
 
 	resetCal();
 	resetRun();
@@ -42,13 +40,13 @@ void PhotoGate::resetCal() {
 void PhotoGate::resetRun() {
 
 	// Reset time
-	_time = -1;
+	_time = 0;
 
 }
 
 
 
-long PhotoGate::showStats() {
+unsigned long PhotoGate::getTime() {
 
 	return _time;
 
@@ -73,15 +71,15 @@ void PhotoGate::updateAll() {
 		Serial.println("Calibrating low...");
 	}
 
-	// Update mid (TUNE THIS)
-	_md = (_lo + _hi) / 2;
+	// Update mid
+	_md = AVG(_lo, _hi);
 
 	// Check trigger
 	if (_light < _md) {
 
 		Serial.println("Triggered!");
 		
-		if (_time < 0) {
+		if (_time == 0) {
 			_time = micros();
 			Serial.println("Time recorded!");
 		}
