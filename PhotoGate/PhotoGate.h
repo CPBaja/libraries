@@ -4,8 +4,6 @@
 	Released to Cal Poly Baja SAE. ;)
 */
 
-
-
 #ifndef PhotoGate_h
 #define PhotoGate_h
 
@@ -21,7 +19,7 @@ class PhotoGate {
 	public:
 		// Constructors
 		PhotoGate();
-		void init(int pin, int calibButton);
+		void init(int pin);
 
 		// Reset calibration
 		void resetCal();
@@ -36,12 +34,12 @@ class PhotoGate {
 		void updateAll();
 
 	private:
-		int _pin;
-		int _calibButton;
+		// Constructor parameters
+		int PIN;
 
 		// updateAll variables
-		int _hi, _md, _lo;
 		int _light;
+		int _hi, _md, _lo;
 		unsigned long _time;
 
 };
