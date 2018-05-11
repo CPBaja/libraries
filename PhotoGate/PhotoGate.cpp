@@ -16,7 +16,7 @@ PhotoGate::PhotoGate() {}
 void PhotoGate::init(int pin) {
 	// Pin
 	PIN = pin;
-	pinMode(PIN, OUTPUT);
+	pinMode(PIN, INPUT);
 
 	resetCal();
 	resetRun();
@@ -38,6 +38,30 @@ void PhotoGate::resetRun() {
 
 
 
+int PhotoGate::getHigh() {
+	return _hi;
+}
+
+
+
+int PhotoGate::getLight() {
+	return _light;
+}
+
+
+
+int PhotoGate::getLow() {
+	return _lo;
+}
+
+
+
+int PhotoGate::getMid() {
+	return _md;
+}
+
+
+
 unsigned long PhotoGate::getTime() {
 	return _time;
 }
@@ -45,6 +69,7 @@ unsigned long PhotoGate::getTime() {
 
 
 void PhotoGate::updateAll() {
+
 	// Read light
 	_light = analogRead(PIN);
 
@@ -60,17 +85,19 @@ void PhotoGate::updateAll() {
 		Serial.println("Calibrating low...");
 	}
 
-	// Update mid
-	_md = AVG(_lo, _hi);
+	// Update mid (tune this)
+	_md = (_lo + _hi * 4) / 5;
 
 	// Check trigger
 	if (_light < _md) {
 
 		Serial.println("Triggered!");
-		
+
 		if (_time == 0) {
 			_time = micros();
 			Serial.println("Time recorded!");
 		}
+
 	}
+
 }

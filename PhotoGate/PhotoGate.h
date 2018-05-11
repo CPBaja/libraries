@@ -9,8 +9,6 @@
 
 #include "Arduino.h"
 
-#define RESETBUTTON 9
-
 // (Tune This)
 #define AVG(_X,_Y) (((_X) + (_Y)) / 2)
 
@@ -21,13 +19,17 @@ class PhotoGate {
 		PhotoGate();
 		void init(int pin);
 
-		// Reset calibration
+		// Reset high, low
 		void resetCal();
 
 		// Reset time
 		void resetRun();
 
-		// Shows stats/status
+		// Return class variables
+		int getHigh();
+		int getLight();
+		int getLow();
+		int getMid();
 		unsigned long getTime();
 
 		// Update high, low, mid (and trigger)
