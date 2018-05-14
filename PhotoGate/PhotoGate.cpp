@@ -86,12 +86,12 @@ void PhotoGate::updateAll() {
 	}
 
 	// Update mid (tune this)
-	_md = (_lo + _hi * 4) / 5;
+	_md = (_lo * 0.5 + _hi * 0.5);
 
 	// Check trigger
 	if (_light < _md) {
 
-		Serial.println("Triggered!");
+		// Serial.println("Triggered!");
 
 		if (_time == 0) {
 			_time = micros();

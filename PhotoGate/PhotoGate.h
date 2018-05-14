@@ -9,9 +9,6 @@
 
 #include "Arduino.h"
 
-// (Tune This)
-#define AVG(_X,_Y) (((_X) + (_Y)) / 2)
-
 class PhotoGate {
 
 	public:
