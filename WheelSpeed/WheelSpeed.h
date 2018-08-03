@@ -28,10 +28,10 @@ class WheelSpeed {
 		int PIN;
 		int TRIGGERS;		
 
-		unsigned long prevTime;
-		unsigned long currTime;
+		volatile unsigned long prevTime;
+		volatile unsigned long currTime;
 
-		float RPS = 0.0;
+		volatile float RPS = 0.0;
 
 		// Helper method
 		float usToRPS(unsigned long usDelta);
