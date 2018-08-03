@@ -13,14 +13,17 @@ PhotoGate::PhotoGate() {}
 
 
 
-void PhotoGate::init(int pin) {
-	// Pin
+void PhotoGate::begin(int pin) {
+	// Pins
 	PIN = pin;
+	LED = pin - A0 + 8;		// Status LED
 	pinMode(PIN, INPUT);
+	pinMode(LED, OUTPUT);
 
 	resetCal();
 	resetRun();
 }
+
 
 
 void PhotoGate::resetCal() {
@@ -86,18 +89,18 @@ void PhotoGate::updateAll() {
 	}
 
 	// Update mid (tune this)
-	_md = (_lo * 0.5 + _hi * 0.5);
+	_md = (_lo + _hi) / 2;
 
-	// Check trigger
+	// Check if blocked
 	if (_light < _md) {
-
-		// Serial.println("Triggered!");
-
-		if (_time == 0) {
+		if (!_time) {
 			_time = micros();
 			Serial.println("Time recorded!");
 		}
-
+		// Serial.println("Blocked!");
+		digitalWrite(LED, HIGH);	// Turn status LED on
+	} else {
+		digitalWrite(LED, LOW);		// Turn status LED off
 	}
 
 }

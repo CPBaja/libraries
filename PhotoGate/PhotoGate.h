@@ -14,7 +14,7 @@ class PhotoGate {
 	public:
 		// Constructors
 		PhotoGate();
-		void init(int pin);
+		void begin(int pin);
 
 		// Reset high, low
 		void resetCal();
@@ -34,7 +34,8 @@ class PhotoGate {
 
 	private:
 		// Constructor parameters
-		int PIN;
+		byte PIN;
+		byte LED;
 
 		// updateAll variables
 		int _light;
