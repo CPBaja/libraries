@@ -128,7 +128,7 @@ void LiveDisplay::title(String str) {
 
 
 
-void LiveDisplay::write(float num, int chars) {
+void LiveDisplay::write(float num, byte chars) {
 
 	// Reset
 	display.setFont(&FreeMonoBold24pt7b);
@@ -146,7 +146,7 @@ void LiveDisplay::write(float num, int chars) {
 
 
 
-void LiveDisplay::write(String str, int chars) {
+void LiveDisplay::write(String str, byte chars) {
 	
 	// Reset
 	display.setFont(&FreeMonoBold24pt7b);

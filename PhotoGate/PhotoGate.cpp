@@ -4,7 +4,7 @@
 	Released to Cal Poly Baja SAE. ;)
 */
 
-#include "Arduino.h"
+#include <Arduino.h>
 #include "PhotoGate.h"
 
 

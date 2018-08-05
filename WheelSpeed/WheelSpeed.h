@@ -16,7 +16,7 @@ class WheelSpeed {
 	public:
 		
 		// Constructor
-		WheelSpeed(int triggers);
+		WheelSpeed(byte triggers);
 
 		// Methods
 		void calcRPS();
@@ -25,16 +25,16 @@ class WheelSpeed {
 
 	private:
 
-		int PIN;
-		int TRIGGERS;		
+		byte PIN;
+		byte TRIGGERS;
 
-		unsigned long prevTime;
-		unsigned long currTime;
+		volatile unsigned long prevTime;
+		volatile unsigned long currTime;
 
-		float RPS = 0.0;
+		volatile float RPS = 0;
 
-		// Helper method
-		float usToRPS(unsigned long usDelta);
+		// // Helper method
+		// volatile float usToRPS(unsigned long usDelta);
 		
 };
 

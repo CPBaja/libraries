@@ -9,7 +9,7 @@
 #ifndef LiveDisplay_h
 #define LiveDisplay_h
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 class LiveDisplay {
 
@@ -21,11 +21,11 @@ class LiveDisplay {
 		void begin();
 		void clear();
 		void title(String str);
-		void write(float num, int chars);
-		void write(String str, int chars);
+		void write(float num, byte chars);
+		void write(String str, byte chars);
 
 	private:
-		int CHARS;
+		byte CHARS;
 
 };
 

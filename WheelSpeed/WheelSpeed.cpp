@@ -10,7 +10,7 @@
 #define TIMEOUT 1000000
 
 // Constructor
-WheelSpeed::WheelSpeed(int triggers) {
+WheelSpeed::WheelSpeed(byte triggers) {
 
 	TRIGGERS = triggers;
 
@@ -25,7 +25,8 @@ void WheelSpeed::calcRPS() {
 
 	// Calculate and update RPS
 	currTime = micros();
-	RPS = usToRPS(currTime - prevTime);
+	RPS = (1000000.0 / (currTime - prevTime)) / TRIGGERS;
+	// RPS = usToRPS(currTime - prevTime);
 
 	// Update prevTime
 	prevTime = currTime;
@@ -49,11 +50,11 @@ void WheelSpeed::setRPS(float rps) {
 
 
 
-// Helper method
-float WheelSpeed::usToRPS(unsigned long usDelta) {
-	// float secDelta = usDelta / 1000000.0;
-	// float period = secDelta * TRIGGERS;
-	// float frequency = 1 / period;
-	// return frequency;
-	return (1000000.0 / usDelta) / TRIGGERS;
-}
+// // Helper method
+// float WheelSpeed::usToRPS(unsigned long usDelta) {
+// 	// float secDelta = usDelta / 1000000.0;
+// 	// float period = secDelta * TRIGGERS;
+// 	// float frequency = 1 / period;
+// 	// return frequency;
+// 	return (1000000.0 / usDelta) / TRIGGERS;
+// }
