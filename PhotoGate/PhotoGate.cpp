@@ -11,8 +11,6 @@
 
 PhotoGate::PhotoGate() {}
 
-
-
 void PhotoGate::begin(int pin) {
 	// Pins
 	PIN = pin;
@@ -24,52 +22,36 @@ void PhotoGate::begin(int pin) {
 	resetRun();
 }
 
-
-
 void PhotoGate::resetCal() {
 	// Reset high and low
 	_hi = 0;
 	_lo = 1023;
 }
 
-
-
 void PhotoGate::resetRun() {
 	// Reset time
 	_time = 0;
 }
 
-
-
 int PhotoGate::getHigh() {
 	return _hi;
 }
-
-
 
 int PhotoGate::getLight() {
 	return _light;
 }
 
-
-
 int PhotoGate::getLow() {
 	return _lo;
 }
-
-
 
 int PhotoGate::getMid() {
 	return _md;
 }
 
-
-
 unsigned long PhotoGate::getTime() {
 	return _time;
 }
-
-
 
 void PhotoGate::updateAll() {
 

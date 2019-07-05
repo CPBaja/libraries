@@ -4,8 +4,6 @@
 	Released to Cal Poly Baja SAE. ;)
 */
 
-
-
 #ifndef WheelSpeed_h
 #define WheelSpeed_h
 
@@ -14,7 +12,6 @@
 class WheelSpeed {
 
 	public:
-		
 		// Constructor
 		WheelSpeed(byte triggers);
 
@@ -24,7 +21,6 @@ class WheelSpeed {
 		void setRPS(float rps);
 
 	private:
-
 		byte PIN;
 		byte TRIGGERS;
 
@@ -35,7 +31,7 @@ class WheelSpeed {
 
 		// // Helper method
 		// volatile float usToRPS(unsigned long usDelta);
-		
+
 };
 
 #endif
