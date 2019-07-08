@@ -7,12 +7,12 @@
 #include <Arduino.h>
 #include "WheelSpeed.h"
 
-#define TIMEOUT 1000000
+const unsigned long TIMEOUT = 1000000;
 
 // Constructor
 WheelSpeed::WheelSpeed(byte triggers) {
 	TRIGGERS = triggers;
-	
+
 	// Initialize prevTime
 	prevTime = micros();
 	
@@ -21,7 +21,7 @@ WheelSpeed::WheelSpeed(byte triggers) {
 void WheelSpeed::calcRPS() {
 	// Calculate and update RPS
 	currTime = micros();
-	RPS = (1000000.0 / (currTime - prevTime)) / TRIGGERS;
+	RPS = 1000000.0 / ((currTime - prevTime) * TRIGGERS);
 
 	// Update prevTime
 	prevTime = currTime;
@@ -30,7 +30,7 @@ void WheelSpeed::calcRPS() {
 
 float WheelSpeed::getRPS() {
 	if (micros() - prevTime >= TIMEOUT) {
-		RPS = 0;
+		return 0;
 	}
 	return RPS;
 }

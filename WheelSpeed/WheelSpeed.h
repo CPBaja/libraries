@@ -21,16 +21,12 @@ class WheelSpeed {
 		void setRPS(float rps);
 
 	private:
-		byte PIN;
 		byte TRIGGERS;
 
 		volatile unsigned long prevTime;
 		volatile unsigned long currTime;
 
 		volatile float RPS = 0;
-
-		// // Helper method
-		// volatile float usToRPS(unsigned long usDelta);
 
 };
 
