@@ -7,8 +7,6 @@
 #include <Arduino.h>
 #include "PhotoGate.h"
 
-
-
 PhotoGate::PhotoGate() {}
 
 void PhotoGate::begin(int pin) {
@@ -54,7 +52,6 @@ unsigned long PhotoGate::getTime() {
 }
 
 void PhotoGate::updateAll() {
-
 	// Read light
 	_light = analogRead(PIN);
 
@@ -84,5 +81,4 @@ void PhotoGate::updateAll() {
 	} else {
 		digitalWrite(LED, LOW);		// Turn status LED off
 	}
-
 }

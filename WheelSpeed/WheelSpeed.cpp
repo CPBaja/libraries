@@ -15,7 +15,6 @@ WheelSpeed::WheelSpeed(byte triggers) {
 
 	// Initialize prevTime
 	prevTime = micros();
-	
 }
 
 void WheelSpeed::calcRPS() {
@@ -25,7 +24,6 @@ void WheelSpeed::calcRPS() {
 
 	// Update prevTime
 	prevTime = currTime;
-
 }
 
 float WheelSpeed::getRPS() {
