@@ -4,30 +4,38 @@
 	Released to Cal Poly Baja SAE. ;)
 */
 
+
+
 #ifndef WheelSpeed_h
 #define WheelSpeed_h
 
-#include <Arduino.h>
+#include "Arduino.h"
 
 class WheelSpeed {
 
 	public:
+		
 		// Constructor
-		WheelSpeed(byte triggers);
+		WheelSpeed(int triggers);
 
 		// Methods
 		void calcRPS();
 		float getRPS();
-		void setRPS(float rps);
+		void overrideRPS(float rps = 0);
 
 	private:
-		byte TRIGGERS;
 
-		volatile unsigned long prevTime;
-		volatile unsigned long currTime;
+		int PIN;
+		int TRIGGERS;		
 
-		volatile float RPS = 0;
+		unsigned long prevTime;
+		unsigned long currTime;
 
+		float RPS = 0.0;
+
+		// Helper method
+		float usToRPS(unsigned long usDelta);
+		
 };
 
 #endif

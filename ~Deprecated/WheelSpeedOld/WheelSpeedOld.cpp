@@ -4,35 +4,52 @@
 	Released to Cal Poly Baja SAE. ;)
 */
 
-#include <Arduino.h>
+#include "Arduino.h"
 #include "WheelSpeed.h"
 
-const unsigned long TIMEOUT = 1000000;
+
 
 // Constructor
-WheelSpeed::WheelSpeed(byte triggers) {
+WheelSpeed::WheelSpeed(int triggers) {
+
 	TRIGGERS = triggers;
 
 	// Initialize prevTime
 	prevTime = micros();
+	
 }
 
+
+
 void WheelSpeed::calcRPS() {
+
 	// Calculate and update RPS
 	currTime = micros();
-	RPS = 1000000.0 / ((currTime - prevTime) * TRIGGERS);
+	RPS = usToRPS(currTime - prevTime);
 
 	// Update prevTime
 	prevTime = currTime;
+
 }
 
+
+
 float WheelSpeed::getRPS() {
-	if (micros() - prevTime >= TIMEOUT) {
-		return 0;
-	}
 	return RPS;
 }
 
-void WheelSpeed::setRPS(float rps) {
+
+
+void WheelSpeed::overrideRPS(float rps = 0) {
 	RPS = rps;
+}
+
+
+
+// Helper method
+float WheelSpeed::usToRPS(unsigned long usDelta) {
+	float secDelta = usDelta / 1000000.0;
+	float period = secDelta * TRIGGERS;
+	float frequency = 1 / period;
+	return frequency;
 }

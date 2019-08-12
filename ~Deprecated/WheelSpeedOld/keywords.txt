@@ -2,3 +2,4 @@ WheelSpeed	KEYWORD1
 calcRPS		KEYWORD2
 getPin		KEYWORD2
 getRPS		KEYWORD2
+overrideRPS	KEYWORD2
