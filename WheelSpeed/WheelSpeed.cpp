@@ -11,19 +11,16 @@ const unsigned long TIMEOUT = 1000000;
 
 // Constructor
 WheelSpeed::WheelSpeed(byte triggers) {
-	TRIGGERS = triggers;
-
-	// Initialize prevTime
+	// Initialize variables
+	this->triggers = triggers;
 	prevTime = micros();
 }
 
 void WheelSpeed::calc() {
 	// Calculate and update speed
 	currTime = micros();
-	// Rotations per Second (RPS)
-	_speed = (float)1000000 / ((currTime - prevTime) * TRIGGERS);
-	// // Rotations per Minute (RPM)
-	// _speed = (float)60000000 / ((currTime - prevTime) * TRIGGERS);
+	speed = (float)1000000 / ((currTime - prevTime) * triggers);	// Rotations per Second (RPS)
+	// speed = (float)60000000 / ((currTime - prevTime) * triggers);	// Rotations per Minute (RPM)
 
 	// Update prevTime
 	prevTime = currTime;
@@ -33,5 +30,5 @@ float WheelSpeed::get() {
 	if (micros() - prevTime >= TIMEOUT) {
 		return 0;
 	}
-	return _speed;
+	return speed;
 }
